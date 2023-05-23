@@ -1,0 +1,21 @@
+.movieCard {
+    display: flex;
+    gap: 20px;
+    font-size: 30px;
+}
+.movieDataTitle {
+    font-weight: 500;
+}
+
+.button {
+    width: 220px;
+    height: 40px;
+    margin: 20px;
+    font-size: 20px;
+    background-color: rgb(215, 212, 212);
+    border: 1px solid grey;
+    border-radius: 10px;
+}
+.button.hover {
+    background-color: rgb(91, 91, 238);
+}

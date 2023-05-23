@@ -1,0 +1,13 @@
+.trendingList {
+  display: block;
+  text-align: start;
+}
+.moviesList {
+   display: block;
+   text-align: start;
+ }
+
+ .list {
+  font-size: px;
+   color: blue;
+ }

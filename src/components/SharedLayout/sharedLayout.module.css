@@ -1,0 +1,34 @@
+.container {
+  width: 100%;
+  margin: 20;
+  padding: 0 32px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 20px 0;
+  margin-bottom: 16px;
+  border-bottom: 1px solid black;
+}
+
+.list {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+}
+
+.navLink {
+  color: black;
+  font-weight: 500;
+  margin: 40px;
+  text-decoration: none;
+
+&:active {
+  color: rgb(149, 15, 15);
+}
+
+
+}
