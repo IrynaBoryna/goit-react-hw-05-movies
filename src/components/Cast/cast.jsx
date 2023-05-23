@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import FetchMovie from 'Servises/servises';
 import { Loader } from '../Loader/loader';
+import PropTypes from 'prop-types';
 
 const Cast = () => {
   const [casts, setCasts] = useState([]);
@@ -27,9 +28,8 @@ const Cast = () => {
 
   return (
     <>
-      {/* {casts.length === 0 && <p>We don't have casts for this movie</p>} */}
-      {error && <p>We don't have casts for this movie...</p>}
-      {/* {error && <p>something went wrong...</p>} */}
+      {casts.length === 0 && <p>We don't have casts for this movie</p>}
+      {error && <p>something went wrong...</p>}
       {isLoading ? (
         <Loader />
       ) : (
@@ -52,3 +52,13 @@ const Cast = () => {
   );
 };
 export default Cast;
+
+Cast.prototype = {
+  character: PropTypes.string,
+  original_name: PropTypes.string,
+  id: PropTypes.number,
+  profile_path: PropTypes.string,
+  isLoading: PropTypes.bool,
+  error: PropTypes.string,
+  castsr: PropTypes.array,
+};

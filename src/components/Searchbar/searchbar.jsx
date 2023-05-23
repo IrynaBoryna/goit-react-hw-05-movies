@@ -1,7 +1,8 @@
 import css from './searchbar.module.css';
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 
-const Seachbar = ({ onSubmit }) => {
+const Seachbar = ({onSubmit}) => {
   const [query, setQuery] = useState('');
 
   const handleInputChange = evt => {
@@ -13,8 +14,8 @@ const Seachbar = ({ onSubmit }) => {
     if (query.trim() === '') {
       return alert('Enter your request');
     }
-    setQuery('');
     onSubmit(query);
+    setQuery('');
   };
 
   return (
@@ -27,11 +28,16 @@ const Seachbar = ({ onSubmit }) => {
         value={query}
         onChange={handleInputChange}
       />
-      <button type="submit" className={css.SearchButton}>
-        <span className={css.SearchButtonText}> Search</span>
-      </button>
+      
+        <button type="submit" className={css.SearchButton}>
+          <span className={css.SearchButtonText}> Search</span>
+        </button>
     </form>
   );
 };
 
 export default Seachbar;
+
+Seachbar.prototype = {
+    query: PropTypes.string,
+  };

@@ -25,10 +25,9 @@
   font-weight: 500;
   margin: 40px;
   text-decoration: none;
-
-&:active {
-  color: rgb(149, 15, 15);
 }
+  .navLink:active {
+    color: rgb(149, 15, 15);
+    text-decoration: underline;
+  }
 
-
-}

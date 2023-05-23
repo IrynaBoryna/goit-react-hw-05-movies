@@ -3,12 +3,13 @@ import css from '../Reviews/reviews.module.css';
  import { useParams } from 'react-router-dom';
  import FetchMovie from 'Servises/servises';
 import { Loader } from '../Loader/loader';
+import PropTypes from 'prop-types';
  
- const Reviews = () => {
-   const [reviews, setReviews] = useState([]);
-   const [error, setError] = useState(null);
-   const [isLoading, setIsLoading] = useState(false);
-   const { movieId } = useParams();
+const Reviews = () => {
+  const [reviews, setReviews] = useState([]);
+  const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const {movieId } = useParams();
 
 
    useEffect(() => {
@@ -45,3 +46,12 @@ import { Loader } from '../Loader/loader';
    );
  };
 export default Reviews;
+
+Reviews.prototype = {
+  author: PropTypes.string,
+  id: PropTypes.number,
+  content: PropTypes.string,
+  isLoading: PropTypes.bool,
+  error: PropTypes.string,
+  reviews: PropTypes.array,
+  };

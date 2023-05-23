@@ -1,13 +1,16 @@
 import { Routes, Route } from 'react-router-dom';
-import { lazy } from 'react';
+import { lazy} from 'react';
+
 const Home = lazy(() => import('../Pages/Home/home'));
 const  Movies = lazy(() => import( '../Pages/Movies/movies'));
 const MovieDetails = lazy(() => import( './MovieDetails/movieDetails'));
 const Cast = lazy(() => import( './Cast/cast'));
 const Reviews = lazy(() => import( './Reviews/reviews'));
 const SharedLayout = lazy(() => import( './SharedLayout/sharedLayout'));
+const NotFound = lazy(() => import('./NotFound/notFound'));
 
 export const App = () => {
+  
   return (
     <div
       style={{
@@ -29,6 +32,7 @@ export const App = () => {
             <Route path="cast" element={<Cast />} />
             <Route path="reviews" element={<Reviews />} />
           </Route>
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     </div>

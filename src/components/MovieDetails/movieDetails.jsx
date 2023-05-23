@@ -1,18 +1,24 @@
 import css from './movieDetails.module.css';
 import { useState, useEffect, Suspense } from 'react';
-import { Link, Outlet, useParams, useLocation } from 'react-router-dom';
+import {
+  Link,
+  Outlet,
+  useParams,
+  useLocation,
+  useNavigate,
+} from 'react-router-dom';
 import FetchMovie from 'Servises/servises';
 import { Loader } from '../Loader/loader';
-
+import PropTypes from 'prop-types';
 
 const MovieDetails = () => {
-  const [movie, setMovie] = useState('');
+  const [movie, setMovie] = useState({});
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [genres, setGenres] = useState([]);
   const { movieId } = useParams();
   const location = useLocation();
-  const backTo = location.state?.from ?? '/';
+  const navigate = useNavigate();
 
   useEffect(() => {
     setIsLoading(true);
@@ -34,7 +40,7 @@ const MovieDetails = () => {
 
   return (
     <>
-      <Link to={backTo}> Go back </Link>
+      <Link onClick={() => navigate(-1)}>Go back</Link>
       {error && <p>something went wrong...</p>}
       {isLoading ? (
         <Loader />
@@ -54,12 +60,15 @@ const MovieDetails = () => {
           </div>
         </div>
       )}
+      <p>Additional information</p>
       <ul>
         <li key={movie.id}>
-          <Link to="cast">Cast</Link>
+          <Link key={movie.id} to="cast" state={{ from: location }}>
+            Cast
+          </Link>
         </li>
         <li>
-          <Link key={movie.id} to="reviews">
+          <Link key={movie.id} to="reviews" state={{ from: location }}>
             Reviews
           </Link>
         </li>
@@ -71,3 +80,15 @@ const MovieDetails = () => {
   );
 };
 export default MovieDetails;
+
+MovieDetails.prototype = {
+  title: PropTypes.string,
+  id: PropTypes.number,
+  movie: PropTypes.object,
+  img: PropTypes.string,
+  isLoading: PropTypes.bool,
+  error: PropTypes.string,
+  genres: PropTypes.array,
+  vote_average: PropTypes.number,
+  overview: PropTypes.string,
+};
