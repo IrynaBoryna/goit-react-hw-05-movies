@@ -11,7 +11,7 @@ const Movies = () => {
   const [moviesSearch, setMoviesSearch] = useState([]);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const { location } = useLocation();
+  const  location  = useLocation();
   const [searchParams, setSearchParams] = useSearchParams('');
 
   const searchQuery = searchParams.get('query') ?? '';
@@ -51,10 +51,8 @@ const Movies = () => {
             <li key={id}>
               <Link
                 className={css.list}
-                to={{
-                  pathname: `${id}`,
-                  state: { from: location },
-                }}
+                to={`${id}`}
+                state={{ from: location }}
               >
                 {title}
               </Link>

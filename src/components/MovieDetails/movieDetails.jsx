@@ -1,11 +1,10 @@
 import css from './movieDetails.module.css';
-import { useState, useEffect, Suspense } from 'react';
+import { useState, useEffect, Suspense, useRef } from 'react';
 import {
   Link,
   Outlet,
   useParams,
   useLocation,
-  useNavigate,
 } from 'react-router-dom';
 import FetchMovie from 'Servises/servises';
 import { Loader } from '../Loader/loader';
@@ -18,7 +17,7 @@ const MovieDetails = () => {
   const [genres, setGenres] = useState([]);
   const { movieId } = useParams();
   const location = useLocation();
-  const navigate = useNavigate();
+  const backTo = useRef(location.state?.from ?? '/');
 
   useEffect(() => {
     setIsLoading(true);
@@ -40,7 +39,7 @@ const MovieDetails = () => {
 
   return (
     <>
-      <Link onClick={() => navigate(-1)}>Go back</Link>
+      <Link to={backTo.current}>Go back</Link>
       {error && <p>something went wrong...</p>}
       {isLoading ? (
         <Loader />
